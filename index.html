@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astitwa Academy - Shaping Futures, Empowering Dreams</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary-color: #0d9488;
+            --accent-color: #f59e0b;
+            --dark-color: #0f172a;
+            --light-bg: #f8fafc;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: #334155;
+            padding-bottom: 70px;
+        }
+
+        .navbar-brand .emblem {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color) !important;
+            font-weight: 700;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e1b4b 100%);
+            color: white;
+            padding: 60px 0;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-card {
+            border: none;
+            border-radius: 18px;
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .meet-container {
+            background-color: #111827;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .video-wrapper {
+            position: relative;
+            aspect-ratio: 16/9;
+            background-color: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-placeholder {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .meet-controls {
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .btn-control {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-control-off {
+            background-color: #ef4444 !important;
+            color: white !important;
+        }
+
+        .btn-control-on {
+            background-color: #374151;
+            color: white;
+        }
+
+        .btn-control-on:hover {
+            background-color: #4b5563;
+        }
+
+        #whiteboardCanvas {
+            border-radius: 12px;
+            background-color: #ffffff;
+            cursor: crosshair;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+            touch-action: none;
+        }
+
+        .floating-contact-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25d366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .floating-contact-btn:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .recording-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .recording-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: white;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .mic-indicator {
+            height: 4px;
+            background: #10b981;
+            width: 0%;
+            transition: width 0.1s ease;
+            border-radius: 2px;
+        }
+
+        .badge-academic {
+            background-color: #e0e7ff;
+            color: #3730a3;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Contact Bar -->
+    <div class="bg-dark text-white py-2 px-3 fs-7">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>
+                <i class="fa-solid fa-phone me-2 text-warning"></i>Direct Admission Helpline: 
+                <a href="tel:+918318525846" onclick="triggerDirectAdmissionModal('General Admission', event)" class="text-white text-decoration-none fw-bold">+91 8318525846</a>
+                <span class="ms-3 d-none d-md-inline"><i class="fa-solid fa-envelope me-2 text-warning"></i>info@astitwaacademy.edu.in</span>
+            </div>
+            <div>
+                <span class="badge bg-success rounded-pill"><i class="fa-solid fa-circle me-1 fs-8"></i> Direct Admissions Open 2026-27</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <div class="emblem">A</div>
+                <div>
+                    <span class="fw-bold text-primary fs-4 d-block lh-1">Astitwa Academy</span>
+                    <small class="text-muted fs-8 fw-semibold" style="font-size: 0.75rem;">Shaping Excellence & Character</small>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto nav-pills gap-1 py-2 py-lg-0">
+                    <li class="nav-item">
+                        <button class="nav-link active rounded-pill px-3" onclick="switchTab('home')"><i class="fa-solid fa-house me-1"></i> Home</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link rounded-pill px-3" onclick="switchTab('tracks')"><i class="fa-solid fa-graduation-cap me-1"></i> Courses & Programs</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link rounded-pill px-3" onclick="switchTab('direct-admission')"><i class="fa-solid fa-bolt me-1 text-warning"></i> Direct Admission</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link rounded-pill px-3" onclick="switchTab('classroom')"><i class="fa-solid fa-video me-1"></i> Live Class & Board</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link rounded-pill px-3" onclick="switchTab('college')"><i class="fa-solid fa-building-columns me-1"></i> Ambika Degree College</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link rounded-pill px-3" onclick="switchTab('about')"><i class="fa-solid fa-circle-info me-1"></i> About Us</button>
+                    </li>
+                </ul>
+                <div class="ms-lg-3 mt-2 mt-lg-0">
+                    <button onclick="triggerDirectAdmissionModal('Direct Admission Navbar Button')" class="btn btn-warning rounded-pill btn-sm px-3 fw-bold text-dark shadow-sm">
+                        <i class="fa-solid fa-phone me-1"></i> Direct Admission (+91 8318525846)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+
+        <!-- ================= HOME TAB ================= -->
+        <section id="tab-home" class="tab-content">
+            <div class="hero-banner text-center mb-5">
+                <div class="container py-4">
+                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3"><i class="fa-solid fa-star me-1"></i> Premier Educational Institute</span>
+                    <h1 class="display-4 fw-extrabold mb-3">Welcome to Astitwa Academy</h1>
+                    <p class="lead max-w-2xl mx-auto mb-4 opacity-90">Providing holistic education from Primary Level, Specializing in English Literature for Higher Classes, Professional Teacher Training (N.T.T), and Higher Degree Programs.</p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <button class="btn btn-warning btn-lg rounded-pill px-4 fw-bold shadow text-dark" onclick="triggerDirectAdmissionModal('Hero Banner Admission')">
+                            <i class="fa-solid fa-bolt me-2"></i> Get Direct Admission
+                        </button>
+                        <button class="btn btn-outline-light btn-lg rounded-pill px-4 fw-bold" onclick="switchTab('classroom')">
+                            <i class="fa-solid fa-video me-2"></i> Join Virtual Live Class
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-md-3">
+                    <div class="card feature-card h-100 p-4 text-center">
+                        <div class="text-primary mb-3"><i class="fa-solid fa-child fs-1"></i></div>
+                        <h5 class="fw-bold">Nursery to Class 7</h5>
+                        <p class="text-muted small">Comprehensive foundational learning covering all core academic subjects.</p>
+                        <button class="btn btn-sm btn-warning rounded-pill fw-bold mt-auto" onclick="triggerDirectAdmissionModal('Nursery to Class 7')">Direct Admission &rarr;</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card h-100 p-4 text-center">
+                        <div class="text-primary mb-3"><i class="fa-solid fa-book-open-reader fs-1"></i></div>
+                        <h5 class="fw-bold">Class 8 to Class 12</h5>
+                        <p class="text-muted small">Specialized English Language & Literature training alongside essential academic streams.</p>
+                        <button class="btn btn-sm btn-warning rounded-pill fw-bold mt-auto" onclick="triggerDirectAdmissionModal('Class 8 to 12 English')">Direct Admission &rarr;</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card h-100 p-4 text-center">
+                        <div class="text-primary mb-3"><i class="fa-solid fa-user-tie fs-1"></i></div>
+                        <h5 class="fw-bold">N.T.T Training</h5>
+                        <p class="text-muted small">Nursery Teacher's Training designed specifically for women empowerment & teaching careers.</p>
+                        <button class="btn btn-sm btn-warning rounded-pill fw-bold mt-auto" onclick="triggerDirectAdmissionModal('N.T.T Women Training')">Direct Admission &rarr;</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card h-100 p-4 text-center">
+                        <div class="text-primary mb-3"><i class="fa-solid fa-university fs-1"></i></div>
+                        <h5 class="fw-bold">Ambika Ram Devi Degree College</h5>
+                        <p class="text-muted small">Undergraduate & postgraduate degree programs under our affiliated higher education wing.</p>
+                        <button class="btn btn-sm btn-warning rounded-pill fw-bold mt-auto" onclick="triggerDirectAdmissionModal('Ambika Degree College')">Direct Admission &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instant Direct Admission Callout Banner -->
+            <div class="card border-0 bg-primary text-white rounded-4 p-4 shadow-sm">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h4 class="fw-bold mb-2"><i class="fa-solid fa-headset me-2 text-warning"></i> Fast Track Direct Admission Helpdesk</h4>
+                        <p class="mb-lg-0 opacity-90">No waiting lines or long registration forms! Speak directly with our Director & Admission Office for instant seat confirmation.</p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                        <button class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark" onclick="triggerDirectAdmissionModal('Fast Track Banner')">
+                            <i class="fa-solid fa-phone me-2"></i> Call +91 8318525846
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TRACKS TAB ================= -->
+        <section id="tab-tracks" class="tab-content d-none">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-primary">Academic Programs & Specializations</h2>
+                <p class="text-muted">Direct admission available across all primary, secondary, teacher training, and college tracks</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Track 1 -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm rounded-4 h-100 p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="bg-primary text-white p-3 rounded-4"><i class="fa-solid fa-shapes fs-3"></i></div>
+                            <div>
+                                <h4 class="fw-bold mb-0">Primary & Middle School</h4>
+                                <span class="badge badge-academic">Nursery to Class 7</span>
+                            </div>
+                        </div>
+                        <p class="text-muted">Focusing on early cognitive growth, numerical abilities, language acquisition, and all core academic subjects.</p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> All Core Subjects: Math, Science, English, Hindi, Social Science, Computers</li>
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> Interactive Visual Learning & Activity Based Classrooms</li>
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> Individual Attention & Regular Assessment</li>
+                        </ul>
+                        <button class="btn btn-warning rounded-pill mt-auto fw-bold text-dark" onclick="triggerDirectAdmissionModal('Nursery to Class 7')">
+                            <i class="fa-solid fa-bolt me-1"></i> Apply Direct: Nursery to Class 7
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Track 2 -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm rounded-4 h-100 p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="bg-primary text-white p-3 rounded-4"><i class="fa-solid fa-book-journal-whills fs-3"></i></div>
+                            <div>
+                                <h4 class="fw-bold mb-0">Secondary & Senior Secondary</h4>
+                                <span class="badge badge-academic">Class 8 to Class 12</span>
+                            </div>
+                        </div>
+                        <p class="text-muted">Specialized focus on English Specialization (Language & Literature) along with board preparation.</p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> Specialization in English Language & English Literature</li>
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> Board Examination Preparation (Classes 9-12)</li>
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> Grammar Mastery, Creative Writing & Public Speaking</li>
+                        </ul>
+                        <button class="btn btn-warning rounded-pill mt-auto fw-bold text-dark" onclick="triggerDirectAdmissionModal('Class 8 to 12 English')">
+                            <i class="fa-solid fa-bolt me-1"></i> Apply Direct: Class 8 to 12
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Track 3 -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm rounded-4 h-100 p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="bg-warning text-dark p-3 rounded-4"><i class="fa-solid fa-award fs-3"></i></div>
+                            <div>
+                                <h4 class="fw-bold mb-0">N.T.T (Nursery Teacher's Training)</h4>
+                                <span class="badge bg-warning text-dark font-weight-bold">Teacher Diploma Track for Women</span>
+                            </div>
+                        </div>
+                        <p class="text-muted">A career-focused professional teacher training program specialized for women aspirants.</p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> Child Psychology, Pedagogy & Teaching Methodology</li>
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> Practical Classroom Internship & Workshop Training</li>
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> Certification for Pre-Primary & Nursery School Teaching</li>
+                        </ul>
+                        <button class="btn btn-warning rounded-pill mt-auto fw-bold text-dark" onclick="triggerDirectAdmissionModal('N.T.T Women Program')">
+                            <i class="fa-solid fa-bolt me-1"></i> Apply Direct: N.T.T Program
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Track 4 -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm rounded-4 h-100 p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="bg-dark text-white p-3 rounded-4"><i class="fa-solid fa-graduation-cap fs-3"></i></div>
+                            <div>
+                                <h4 class="fw-bold mb-0">Ambika Ram Devi Degree College</h4>
+                                <span class="badge bg-dark text-white">Degree Education</span>
+                            </div>
+                        </div>
+                        <p class="text-muted">Comprehensive higher education programs delivering graduation and post-graduation degrees.</p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> Bachelor of Arts (B.A.), Bachelor of Science (B.Sc.), B.Com</li>
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> Post-Graduate Courses & Specialized Diplomas</li>
+                            <li class="list-group-item bg-transparent"><i class="fa-solid fa-check text-success me-2"></i> Affiliated Curriculum & State-of-the-art Academic Campus</li>
+                        </ul>
+                        <button class="btn btn-dark rounded-pill mt-auto fw-bold" onclick="triggerDirectAdmissionModal('Ambika Degree College')">
+                            <i class="fa-solid fa-bolt me-1"></i> Apply Direct: Degree College
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DIRECT ADMISSION TAB ================= -->
+        <section id="tab-direct-admission" class="tab-content d-none">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="card border-0 shadow-lg rounded-4 p-5">
+                        <div class="bg-warning text-dark rounded-circle mx-auto d-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fa-solid fa-bolt fs-1"></i>
+                        </div>
+                        <h2 class="fw-extrabold text-primary mb-2">Direct Admission Desk</h2>
+                        <p class="text-muted lead mb-4">Get instant admission with zero hassle. Connect directly with our admission coordinator right away!</p>
+
+                        <div class="p-4 bg-light rounded-4 border mb-4 text-start">
+                            <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-circle-check text-success me-2"></i> Direct Admission Steps:</h5>
+                            <ol class="mb-0 ps-3">
+                                <li class="mb-2"><strong>Call or WhatsApp:</strong> Connect instantly with Helpline <strong class="text-primary">+91 8318525846</strong>.</li>
+                                <li class="mb-2"><strong>Select Course:</strong> Nursery–Class 7, Class 8–12 English, N.T.T Women Program, or Ambika Degree College.</li>
+                                <li class="mb-0"><strong>Seat Confirmation:</strong> Instant verification and admission receipt generation on spot.</li>
+                            </ol>
+                        </div>
+
+                        <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                            <a href="tel:+918318525846" onclick="logAdmissionInteraction('Direct Phone Call')" class="btn btn-primary btn-lg rounded-pill px-4 fw-bold shadow">
+                                <i class="fa-solid fa-phone me-2"></i> Call Now (+91 8318525846)
+                            </a>
+                            <a href="https://wa.me/918318525846?text=Hello%20Astitwa%20Academy,%20I%20want%20direct%20admission%20details." target="_blank" onclick="logAdmissionInteraction('Direct WhatsApp')" class="btn btn-success btn-lg rounded-pill px-4 fw-bold shadow">
+                                <i class="fa-brands fa-whatsapp me-2"></i> WhatsApp Admission Desk
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CLASSROOM & WHITEBOARD TAB ================= -->
+        <section id="tab-classroom" class="tab-content d-none">
+            <div class="row g-4">
+                <!-- Video Stream Section -->
+                <div class="col-lg-7">
+                    <div class="meet-container">
+                        <!-- Recording Badge -->
+                        <div id="recordingBadge" class="recording-badge">
+                            <div class="recording-dot"></div>
+                            <span>REC <span id="recTimer">00:00</span></span>
+                        </div>
+
+                        <div class="p-3 bg-dark text-white d-flex justify-content-between align-items-center border-bottom border-secondary">
+                            <div>
+                                <h5 class="fw-bold mb-0 text-truncate"><i class="fa-solid fa-video text-danger me-2"></i> Astitwa Virtual Classroom</h5>
+                                <small class="text-muted">Live Interactive Session | Direct WebRTC Stream</small>
+                            </div>
+                            <span class="badge bg-success"><i class="fa-solid fa-users me-1"></i> Live</span>
+                        </div>
+
+                        <!-- Video Container -->
+                        <div class="video-wrapper">
+                            <video id="userCamVideo" autoplay playsinline muted style="display: none;"></video>
+                            <div id="videoAvatar" class="avatar-placeholder">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                        </div>
+
+                        <!-- Audio Level Visualizer Indicator -->
+                        <div class="bg-dark px-3 py-1">
+                            <small class="text-muted fs-8 d-block mb-1">Mic Signal Level:</small>
+                            <div class="progress bg-secondary" style="height: 4px;">
+                                <div id="micVolumeBar" class="mic-indicator"></div>
+                            </div>
+                        </div>
+
+                        <!-- Meet Controls -->
+                        <div class="meet-controls d-flex justify-content-center align-items-center gap-3 flex-wrap">
+                            <button id="toggleCamBtn" class="btn-control btn-control-off" title="Toggle Camera" onclick="toggleCamera()">
+                                <i class="fa-solid fa-video-slash"></i>
+                            </button>
+                            <button id="toggleMicBtn" class="btn-control btn-control-off" title="Toggle Microphone" onclick="toggleMicrophone()">
+                                <i class="fa-solid fa-microphone-slash"></i>
+                            </button>
+                            <button id="shareScreenBtn" class="btn-control btn-control-on" title="Share Screen" onclick="toggleScreenShare()">
+                                <i class="fa-solid fa-desktop"></i>
+                            </button>
+                            <button id="recordBtn" class="btn btn-danger rounded-pill px-3 fw-bold" onclick="toggleRecording()">
+                                <i class="fa-solid fa-circle me-1"></i> Record Session
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Classroom Chat Log -->
+                    <div class="card border-0 shadow-sm rounded-4 mt-4 p-3">
+                        <h6 class="fw-bold text-dark mb-2"><i class="fa-solid fa-comments text-primary me-2"></i> Class Discussion & Q&A</h6>
+                        <div id="chatMessages" class="bg-light rounded-3 p-3 mb-3" style="height: 180px; overflow-y: auto;">
+                            <div class="text-muted small text-center my-2">-- Live Class Chat Log --</div>
+                            <div class="mb-2"><strong class="text-primary">Instructor:</strong> Welcome students! Turn on your camera & microphone to participate.</div>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="chatInput" class="form-control rounded-start-pill" placeholder="Ask a question or type a note...">
+                            <button class="btn btn-primary rounded-end-pill px-4" onclick="sendChatMessage()">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Whiteboard Section -->
+                <div class="col-lg-5">
+                    <div class="card border-0 shadow-sm rounded-4 p-3">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0 text-primary"><i class="fa-solid fa-chalkboard me-2"></i> Board to Explain</h5>
+                            <button class="btn btn-sm btn-outline-success rounded-pill fw-bold" onclick="downloadWhiteboard()">
+                                <i class="fa-solid fa-download me-1"></i> Save Board
+                            </button>
+                        </div>
+
+                        <!-- Whiteboard Controls Toolbar -->
+                        <div class="bg-light p-2 rounded-3 mb-3 d-flex flex-wrap gap-2 align-items-center justify-content-between">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-outline-dark active" id="toolPencil" onclick="setBoardTool('pencil')" title="Pencil/Pen"><i class="fa-solid fa-pen"></i></button>
+                                <button type="button" class="btn btn-outline-dark" id="toolEraser" onclick="setBoardTool('eraser')" title="Eraser"><i class="fa-solid fa-eraser"></i></button>
+                                <button type="button" class="btn btn-outline-dark" id="toolLine" onclick="setBoardTool('line')" title="Line"><i class="fa-solid fa-minus"></i></button>
+                                <button type="button" class="btn btn-outline-dark" id="toolRect" onclick="setBoardTool('rect')" title="Rectangle"><i class="fa-regular fa-square"></i></button>
+                                <button type="button" class="btn btn-outline-dark" id="toolCircle" onclick="setBoardTool('circle')" title="Circle"><i class="fa-regular fa-circle"></i></button>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-2">
+                                <input type="color" id="boardColorPicker" class="form-control form-control-color form-control-sm border-0 bg-transparent" value="#1e3a8a" title="Color">
+                                <input type="range" id="boardBrushSize" class="form-range" style="width: 80px;" min="1" max="20" value="3" title="Brush Size">
+                            </div>
+
+                            <button class="btn btn-sm btn-outline-danger" onclick="clearWhiteboard()" title="Clear Canvas"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+
+                        <!-- Canvas Container -->
+                        <div class="w-100 position-relative">
+                            <canvas id="whiteboardCanvas" width="450" height="420" class="w-100 border"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DEGREE COLLEGE TAB ================= -->
+        <section id="tab-college" class="tab-content d-none">
+            <div class="bg-white rounded-4 p-5 shadow-sm mb-5 border-start border-5 border-primary">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <span class="badge bg-primary px-3 py-2 rounded-pill fw-bold mb-2">Higher Education Wing</span>
+                        <h2 class="fw-extrabold text-primary display-6">Ambika Ram Devi Degree College</h2>
+                        <p class="lead text-muted">Affiliated Higher Secondary and Degree College providing recognized undergraduate & graduate qualifications with academic excellence.</p>
+                        <div class="d-flex gap-3 mt-4">
+                            <button onclick="triggerDirectAdmissionModal('Ambika Degree College')" class="btn btn-warning rounded-pill px-4 fw-bold text-dark">
+                                <i class="fa-solid fa-bolt me-2"></i> Direct College Admission (+91 8318525846)
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mt-4 mt-md-0">
+                        <div class="p-4 bg-light rounded-4 border">
+                            <i class="fa-solid fa-building-columns fs-1 text-primary mb-3"></i>
+                            <h5 class="fw-bold">College Direct Desk</h5>
+                            <p class="small text-muted mb-0">Direct Admission & College Student Helpdesk</p>
+                            <hr>
+                            <a href="tel:+918318525846" onclick="triggerDirectAdmissionModal('Ambika College Desk', event)" class="fw-bold text-dark text-decoration-none mb-0 d-block fs-5">
+                                <i class="fa-solid fa-phone me-1 text-success"></i> +91 8318525846
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- College Programs -->
+            <h4 class="fw-bold mb-4">Degrees Offered</h4>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                        <h5 class="fw-bold text-primary">Bachelor of Arts (B.A.)</h5>
+                        <p class="text-muted small">Comprehensive program in Humanities, Literature, Political Science, and Social Sciences.</p>
+                        <button class="btn btn-sm btn-outline-primary rounded-pill fw-bold mt-auto" onclick="triggerDirectAdmissionModal('B.A. Degree')">Direct Admission</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                        <h5 class="fw-bold text-primary">Bachelor of Science (B.Sc.)</h5>
+                        <p class="text-muted small">Specialized degree in Pure Sciences, Physics, Chemistry, Mathematics, and Life Sciences.</p>
+                        <button class="btn btn-sm btn-outline-primary rounded-pill fw-bold mt-auto" onclick="triggerDirectAdmissionModal('B.Sc. Degree')">Direct Admission</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                        <h5 class="fw-bold text-primary">Commerce & Management</h5>
+                        <p class="text-muted small">Undergraduate commerce degree preparing students for accounting, finance, and enterprise.</p>
+                        <button class="btn btn-sm btn-outline-primary rounded-pill fw-bold mt-auto" onclick="triggerDirectAdmissionModal('B.Com Degree')">Direct Admission</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABOUT TAB ================= -->
+        <section id="tab-about" class="tab-content d-none">
+            <div class="row g-4 align-items-center mb-5">
+                <div class="col-lg-6">
+                    <span class="badge bg-primary px-3 py-2 rounded-pill fw-bold mb-2">About Our Institution</span>
+                    <h2 class="fw-extrabold text-primary mb-3">Empowering Minds, Inspiring Excellence</h2>
+                    <p class="text-muted">Astitwa Academy was founded with the mission to nurture academic discipline, moral values, and communicative confidence in every student.</p>
+                    <p class="text-muted">From primary foundation classes to English literature mastery and professional N.T.T teacher training, we ensure personalized attention and state-of-the-art educational methodologies.</p>
+                    <div class="card border-0 bg-light p-3 rounded-4 border-start border-4 border-warning mb-3">
+                        <h6 class="fw-bold text-dark mb-1"><i class="fa-solid fa-award me-2 text-warning"></i> Ambika Ram Devi Degree College Wing</h6>
+                        <p class="small text-muted mb-0">Our higher education wing provides affiliated undergraduate degrees to foster complete academic growth under one banner.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="p-5 bg-primary text-white rounded-4 shadow">
+                        <div class="emblem mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2.5rem; background: rgba(255,255,255,0.2);">A</div>
+                        <h3 class="fw-bold">Astitwa Academy</h3>
+                        <p class="opacity-80">Director & Admission Desk Contact</p>
+                        <hr class="bg-white">
+                        <a href="tel:+918318525846" onclick="triggerDirectAdmissionModal('About Us Call')" class="btn btn-warning rounded-pill btn-lg fw-bold text-dark w-100">
+                            <i class="fa-solid fa-phone me-2"></i> +91 8318525846
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Floating Direct WhatsApp Button -->
+    <a href="https://wa.me/918318525846?text=Hello%20Astitwa%20Academy,%20I%20have%20an%20inquiry." target="_blank" onclick="logAdmissionInteraction('Floating WhatsApp')" class="floating-contact-btn" title="Contact on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Direct Admission Quick Contact Modal -->
+    <div class="modal fade" id="directAdmissionModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content border-0 rounded-4 shadow text-center p-4">
+                <div class="modal-body p-2">
+                    <div class="bg-warning text-dark rounded-circle mx-auto d-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                        <i class="fa-solid fa-bolt fs-2"></i>
+                    </div>
+                    <h4 class="fw-bold text-primary mb-1">Direct Admission Desk</h4>
+                    <p class="small text-muted mb-2">Astitwa Academy & Ambika Ram Devi Degree College</p>
+                    <span id="modalCourseBadge" class="badge bg-primary px-3 py-2 rounded-pill fw-bold mb-4">General Admission</span>
+                    
+                    <div class="card bg-light border-0 rounded-3 p-3 mb-3 text-start">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-phone-volume text-success fs-3"></i>
+                            <div>
+                                <small class="text-muted d-block">Official Admission Line</small>
+                                <a href="tel:+918318525846" class="fw-extrabold text-dark text-decoration-none fs-5">+91 8318525846</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="tel:+918318525846" onclick="logAdmissionInteraction('Modal Call Click')" class="btn btn-primary btn-lg rounded-pill w-100 fw-bold py-2 mb-2 shadow">
+                        <i class="fa-solid fa-phone me-2"></i> Call Now (+91 8318525846)
+                    </a>
+                    <a href="https://wa.me/918318525846?text=Hello%20Astitwa%20Academy,%20I%20want%20direct%20admission%20details." target="_blank" onclick="logAdmissionInteraction('Modal WhatsApp Click')" class="btn btn-success btn-lg rounded-pill w-100 fw-bold py-2 shadow">
+                        <i class="fa-brands fa-whatsapp me-2"></i> Direct Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function triggerDirectAdmissionModal(courseTitle, event) {
+            if (event) event.preventDefault();
+            const badgeEl = document.getElementById('modalCourseBadge');
+            if (badgeEl && courseTitle) {
+                badgeEl.innerText = courseTitle;
+            }
+            const modalEl = document.getElementById('directAdmissionModal');
+            if (modalEl) {
+                const modal = new bootstrap.Modal(modalEl);
+                modal.show();
+            }
+            logAdmissionInteraction('Modal Opened for: ' + courseTitle);
+        }
+
+        // ==========================================
+        // DATABASE ENGINE (Firestore API + LocalStorage Persistence)
+        // ==========================================
+        class DatabaseManager {
+            constructor() {
+                this.dbKey = "AstitwaAcademy_DB_v2";
+                this.initDB();
+            }
+
+            initDB() {
+                if (!localStorage.getItem(this.dbKey)) {
+                    const initialData = {
+                        admissionLogs: [],
+                        chats: [],
+                        classLogs: []
+                    };
+                    localStorage.setItem(this.dbKey, JSON.stringify(initialData));
+                }
+            }
+
+            getDB() {
+                try {
+                    return JSON.parse(localStorage.getItem(this.dbKey)) || { admissionLogs: [], chats: [], classLogs: [] };
+                } catch (e) {
+                    return { admissionLogs: [], chats: [], classLogs: [] };
+                }
+            }
+
+            saveDB(data) {
+                localStorage.setItem(this.dbKey, JSON.stringify(data));
+            }
+
+            logInteraction(action) {
+                const db = this.getDB();
+                db.admissionLogs.unshift({
+                    action: action,
+                    timestamp: new Date().toLocaleString()
+                });
+                this.saveDB(db);
+            }
+
+            saveChatMessage(msgObj) {
+                const db = this.getDB();
+                db.chats.push(msgObj);
+                this.saveDB(db);
+            }
+        }
+
+        const db = new DatabaseManager();
+
+        function logAdmissionInteraction(source) {
+            db.logInteraction(source);
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('d-none'));
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+
+            const selectedTab = document.getElementById('tab-' + tabId);
+            if (selectedTab) {
+                selectedTab.classList.remove('d-none');
+            }
+
+            // Highlight nav button
+            const navBtn = Array.from(document.querySelectorAll('.nav-link')).find(btn => btn.getAttribute('onclick')?.includes(tabId));
+            if (navBtn) navBtn.classList.add('active');
+
+            // Resize canvas if switching to classroom
+            if (tabId === 'classroom') {
+                setTimeout(resizeCanvas, 100);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        let localStream = null;
+        let screenStream = null;
+        let isCamOn = false;
+        let isMicOn = false;
+        let isSharingScreen = false;
+        let mediaRecorder = null;
+        let recordedChunks = [];
+        let recordTimerInterval = null;
+        let recordSeconds = 0;
+        let audioContext = null;
+        let analyser = null;
+
+        async function toggleCamera() {
+            const videoEl = document.getElementById('userCamVideo');
+            const avatarEl = document.getElementById('videoAvatar');
+            const camBtn = document.getElementById('toggleCamBtn');
+
+            if (!isCamOn) {
+                try {
+                    if (!localStream) {
+                        localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                    } else if (localStream.getVideoTracks().length === 0) {
+                        const vStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                        localStream.addTrack(vStream.getVideoTracks()[0]);
+                    }
+
+                    localStream.getVideoTracks().forEach(track => track.enabled = true);
+                    videoEl.srcObject = localStream;
+                    videoEl.style.display = 'block';
+                    avatarEl.style.display = 'none';
+
+                    camBtn.classList.remove('btn-control-off');
+                    camBtn.classList.add('btn-control-on');
+                    camBtn.innerHTML = '<i class="fa-solid fa-video"></i>';
+                    isCamOn = true;
+                } catch (err) {
+                    alert('Camera Access Denied or Not Found: ' + err.message);
+                }
+            } else {
+                if (localStream) {
+                    localStream.getVideoTracks().forEach(track => track.enabled = false);
+                }
+                videoEl.style.display = 'none';
+                avatarEl.style.display = 'flex';
+
+                camBtn.classList.remove('btn-control-on');
+                camBtn.classList.add('btn-control-off');
+                camBtn.innerHTML = '<i class="fa-solid fa-video-slash"></i>';
+                isCamOn = false;
+            }
+        }
+
+        async function toggleMicrophone() {
+            const micBtn = document.getElementById('toggleMicBtn');
+
+            if (!isMicOn) {
+                try {
+                    if (!localStream) {
+                        localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: isCamOn });
+                    } else if (localStream.getAudioTracks().length === 0) {
+                        const aStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                        localStream.addTrack(aStream.getAudioTracks()[0]);
+                    }
+
+                    localStream.getAudioTracks().forEach(track => track.enabled = true);
+                    setupAudioVisualizer(localStream);
+
+                    micBtn.classList.remove('btn-control-off');
+                    micBtn.classList.add('btn-control-on');
+                    micBtn.innerHTML = '<i class="fa-solid fa-microphone"></i>';
+                    isMicOn = true;
+                } catch (err) {
+                    alert('Microphone Access Denied or Not Found: ' + err.message);
+                }
+            } else {
+                if (localStream) {
+                    localStream.getAudioTracks().forEach(track => track.enabled = false);
+                }
+                micBtn.classList.remove('btn-control-on');
+                micBtn.classList.add('btn-control-off');
+                micBtn.innerHTML = '<i class="fa-solid fa-microphone-slash"></i>';
+                isMicOn = false;
+                document.getElementById('micVolumeBar').style.width = '0%';
+            }
+        }
+
+        function setupAudioVisualizer(stream) {
+            try {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const source = audioContext.createMediaStreamSource(stream);
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 64;
+                source.connect(analyser);
+
+                const dataArray = new Uint8Array(analyser.frequencyBinCount);
+                const volumeBar = document.getElementById('micVolumeBar');
+
+                function updateVolume() {
+                    if (isMicOn && analyser) {
+                        analyser.getByteFrequencyData(dataArray);
+                        let sum = 0;
+                        for (let i = 0; i < dataArray.length; i++) {
+                            sum += dataArray[i];
+                        }
+                        let average = sum / dataArray.length;
+                        let pct = Math.min(100, Math.round((average / 128) * 100));
+                        volumeBar.style.width = pct + '%';
+                        requestAnimationFrame(updateVolume);
+                    } else {
+                        volumeBar.style.width = '0%';
+                    }
+                }
+                updateVolume();
+            } catch(e) { console.log(e); }
+        }
+
+        async function toggleScreenShare() {
+            const videoEl = document.getElementById('userCamVideo');
+            const avatarEl = document.getElementById('videoAvatar');
+
+            if (!isSharingScreen) {
+                try {
+                    screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+                    videoEl.srcObject = screenStream;
+                    videoEl.style.display = 'block';
+                    avatarEl.style.display = 'none';
+                    isSharingScreen = true;
+
+                    screenStream.getVideoTracks()[0].onended = () => {
+                        stopScreenShare();
+                    };
+                } catch (err) {
+                    console.log("Screen share cancelled", err);
+                }
+            } else {
+                stopScreenShare();
+            }
+        }
+
+        function stopScreenShare() {
+            if (screenStream) {
+                screenStream.getTracks().forEach(t => t.stop());
+            }
+            isSharingScreen = false;
+            const videoEl = document.getElementById('userCamVideo');
+            const avatarEl = document.getElementById('videoAvatar');
+
+            if (isCamOn && localStream) {
+                videoEl.srcObject = localStream;
+            } else {
+                videoEl.style.display = 'none';
+                avatarEl.style.display = 'flex';
+            }
+        }
+
+        function toggleRecording() {
+            const recBtn = document.getElementById('recordBtn');
+            const recBadge = document.getElementById('recordingBadge');
+
+            if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+                const streamToRecord = screenStream || localStream;
+                if (!streamToRecord) {
+                    alert('Please turn on your Camera or Screen Share first to record the class session!');
+                    return;
+                }
+
+                recordedChunks = [];
+                try {
+                    mediaRecorder = new MediaRecorder(streamToRecord, { mimeType: 'video/webm' });
+                } catch(e) {
+                    mediaRecorder = new MediaRecorder(streamToRecord);
+                }
+
+                mediaRecorder.ondataavailable = (e) => {
+                    if (e.data.size > 0) recordedChunks.push(e.data);
+                };
+
+                mediaRecorder.onstop = downloadRecording;
+
+                mediaRecorder.start();
+                recBtn.innerHTML = '<i class="fa-solid fa-square me-1"></i> Stop Recording';
+                recBadge.style.display = 'flex';
+
+                // Timer
+                recordSeconds = 0;
+                recordTimerInterval = setInterval(() => {
+                    recordSeconds++;
+                    const mins = String(Math.floor(recordSeconds / 60)).padStart(2, '0');
+                    const secs = String(recordSeconds % 60).padStart(2, '0');
+                    document.getElementById('recTimer').innerText = `${mins}:${secs}`;
+                }, 1000);
+
+            } else {
+                mediaRecorder.stop();
+                clearInterval(recordTimerInterval);
+                recBtn.innerHTML = '<i class="fa-solid fa-circle me-1"></i> Record Session';
+                recBadge.style.display = 'none';
+            }
+        }
+
+        function downloadRecording() {
+            const blob = new Blob(recordedChunks, { type: 'video/webm' });
+            const url = URL.URL ? URL.createObjectURL(blob) : window.webkitURL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = `Astitwa_Class_Lecture_${Date.now()}.webm`;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }, 100);
+        }
+
+        const canvas = document.getElementById('whiteboardCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let currentTool = 'pencil';
+        let startX = 0, startY = 0;
+        let snapshot = null;
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            if (container) {
+                const tempImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                canvas.width = container.clientWidth || 450;
+                canvas.height = 420;
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.putImageData(tempImage, 0, 0);
+            }
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+
+        function setBoardTool(tool) {
+            currentTool = tool;
+            document.querySelectorAll('#toolPencil, #toolEraser, #toolLine, #toolRect, #toolCircle').forEach(b => b.classList.remove('active'));
+            if (tool === 'pencil') document.getElementById('toolPencil').classList.add('active');
+            if (tool === 'eraser') document.getElementById('toolEraser').classList.add('active');
+            if (tool === 'line') document.getElementById('toolLine').classList.add('active');
+            if (tool === 'rect') document.getElementById('toolRect').classList.add('active');
+            if (tool === 'circle') document.getElementById('toolCircle').classList.add('active');
+        }
+
+        function getCanvasCoords(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const pos = getCanvasCoords(e);
+            startX = pos.x;
+            startY = pos.y;
+
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            const pos = getCanvasCoords(e);
+            const color = document.getElementById('boardColorPicker').value;
+            const size = document.getElementById('boardBrushSize').value;
+
+            ctx.lineWidth = size;
+            ctx.lineCap = 'round';
+
+            if (currentTool === 'pencil') {
+                ctx.strokeStyle = color;
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+            } else if (currentTool === 'eraser') {
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = size * 3;
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+            } else if (currentTool === 'line') {
+                ctx.putImageData(snapshot, 0, 0);
+                ctx.strokeStyle = color;
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+            } else if (currentTool === 'rect') {
+                ctx.putImageData(snapshot, 0, 0);
+                ctx.strokeStyle = color;
+                ctx.strokeRect(startX, startY, pos.x - startX, pos.y - startY);
+            } else if (currentTool === 'circle') {
+                ctx.putImageData(snapshot, 0, 0);
+                ctx.strokeStyle = color;
+                ctx.beginPath();
+                let radius = Math.sqrt(Math.pow(pos.x - startX, 2) + Math.pow(pos.y - startY, 2));
+                ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+
+        canvas.addEventListener('touchstart', (e) => { startDrawing(e); e.preventDefault(); });
+        canvas.addEventListener('touchmove', (e) => { draw(e); e.preventDefault(); });
+        canvas.addEventListener('touchend', stopDrawing);
+
+        function clearWhiteboard() {
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function downloadWhiteboard() {
+            const image = canvas.toDataURL("image/png");
+            const link = document.createElement('a');
+            link.download = `Astitwa_Board_Notes_${Date.now()}.png`;
+            link.href = image;
+            link.click();
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const chatBox = document.getElementById('chatMessages');
+            const msgHTML = `<div class="mb-2"><strong class="text-success">You:</strong> ${text}</div>`;
+            chatBox.innerHTML += msgHTML;
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            db.saveChatMessage({ sender: 'Student', text: text, time: new Date().toLocaleTimeString() });
+            input.value = '';
+        }
+
+        // Initialize Whiteboard Canvas
+        window.onload = function() {
+            clearWhiteboard();
+            resizeCanvas();
+        };
+    </script>
+</body>
+</html>
